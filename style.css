@@ -1,0 +1,508 @@
+/* --- Reset Dasar --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none; /* Menyembunyikan kursor asli */
+}
+
+body {
+    background-color: #0f111a;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    
+    /* PERBAIKAN SCROLLING DISINI: */
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    min-height: 100vh; 
+    height: auto;
+}
+
+/* --- Kursor Kustom --- */
+.cursor {
+    width: 10px;
+    height: 10px;
+    border: 1px solid white;
+    border-radius: 50%;
+    position: fixed; 
+    transition-duration: 200ms;
+    transition-timing-function: out;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.cursor2 {
+    width: 8px;
+    height: 8px;
+    background-color: #ff4757;
+    border-radius: 50%;
+    position: fixed; 
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Efek saat kursor menyentuh menu (membesar) */
+.cursor.expand {
+    transform: scale(5);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+}
+
+/* --- Header & Nav --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 40px;
+}
+
+nav ul li a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* Class active untuk menandai menu yang sedang dibuka */
+nav ul li a:hover, nav ul li a.active {
+    color: #fff;
+}
+
+/* Efek Garis Bawah saat Hover Menu */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ff4757;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+    width: 100%;
+}
+
+/* --- Dekorasi Background --- */
+.bg-letter {
+    position: absolute;
+    font-size: 400px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03); 
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    user-select: none;
+}
+
+.shape {
+    position: absolute;
+    z-index: 2;
+    opacity: 0.7;
+}
+.shape-triangle {
+    top: 20%; left: 45%;
+    color: #ffcc00; font-size: 24px;
+    animation: float 4s infinite ease-in-out;
+}
+.shape-circle {
+    bottom: 25%; left: 15%;
+    color: #00d2d3; font-size: 18px;
+    animation: float 5s infinite ease-in-out reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* --- Hero Section (Halaman Home) --- */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 100px;
+    position: relative;
+    z-index: 5;
+}
+
+.hero h1 {
+    font-size: 80px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #ff4757; 
+    font-weight: 600;
+    margin-bottom: 40px;
+    min-height: 30px; 
+}
+
+/* Tombol */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    border: 2px solid #ff4757;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    width: fit-content;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff4757;
+    box-shadow: 0 0 15px #ff4757;
+}
+
+/* --- Sidebar Sosmed --- */
+.sidebar {
+    position: fixed;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    z-index: 10;
+}
+
+.sidebar a {
+    color: #b0b0b0;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #ff4757;
+    transform: scale(1.2);
+}
+
+/* --- Scroll Indicator --- */
+.scroll-down {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 12px;
+    color: #b0b0b0;
+    animation: float 2s infinite;
+}
+
+.line {
+    width: 1px;
+    height: 40px;
+    background-color: #b0b0b0;
+    margin: 10px auto 0;
+}
+
+/* =========================================
+   STYLE UNTUK HALAMAN LAIN (Projects, About, Contact)
+   ========================================= */
+
+/* Layout Container Halaman */
+.page-container {
+    padding: 100px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.page-container:last-child {
+    padding-bottom: 150px; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-title {
+    font-size: 50px;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+.page-title span { color: #ff4757; }
+.text-accent { color: #ff4757; }
+
+/* --- Projects Page Styling --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05); 
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: #ff4757;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.card-number {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 60px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.03);
+}
+
+.project-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.project-card p {
+    font-size: 14px;
+    color: #b0b0b0;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tech-stack {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.tech-tag {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+    border: 1px solid #ff4757;
+}
+
+/* --- About Page Styling --- */
+.about-wrapper {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.about-text p {
+    color: #b0b0b0;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.skills-box {
+    margin-top: 30px;
+}
+
+.skill-item {
+    margin-bottom: 15px;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 6px;
+    background: #2d3436;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    background: #ff4757;
+    width: 0;
+    animation: fillBar 1.5s ease-out forwards;
+}
+
+@keyframes fillBar {
+    to { width: var(--w); }
+}
+
+/* --- Contact Page Styling --- */
+.contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-methods {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px 50px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+    text-decoration: none;
+    min-width: 200px;
+}
+
+.contact-card:hover {
+    border-color: #ff4757;
+    transform: translateY(-5px);
+}
+
+.contact-card i {
+    font-size: 40px;
+    color: #ff4757;
+    margin-bottom: 15px;
+}
+
+.contact-card h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.contact-card span {
+    color: #b0b0b0;
+    font-size: 14px;
+}
+
+/* --- Responsive Layout (Mobile) --- */
+@media (max-width: 768px) {
+    /* 1. KEMBALIKAN KURSOR ASLI & MATIKAN KURSOR KUSTOM */
+    * {
+        cursor: auto !important; /* Memunculkan kembali kursor/sentuhan asli HP */
+    }
+    .cursor, .cursor2 {
+        display: none !important; /* Menyembunyikan elemen kursor kustom */
+    }
+
+    /* 2. RAPIKAN HEADER & MENU */
+    header {
+        padding: 20px;
+        flex-direction: column; /* Menyusun logo di atas dan menu di bawahnya */
+        gap: 15px;
+    }
+    
+    nav ul {
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap; /* Menu akan turun ke baris baru jika layar terlalu sempit */
+        padding: 0;
+    }
+    
+    nav ul li {
+        margin-left: 0; /* Menghapus margin agar menu rapi di tengah */
+    }
+    
+    nav ul li a {
+        font-size: 13px;
+    }
+
+    /* 3. RAPIKAN HALAMAN DEPAN (HERO) */
+    .hero {
+        padding-left: 20px;
+        padding-right: 20px;
+        align-items: center;
+        text-align: center;
+        height: 70vh;
+    }
+    
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    /* Sembunyikan sidebar sosmed di HP agar tidak menutupi konten */
+    .sidebar {
+        display: none; 
+    }
+
+    /* 4. RAPIKAN HALAMAN LAIN (Projects, About, Contact) */
+    .page-container {
+        padding: 80px 20px;
+    }
+
+    .page-title {
+        font-size: 35px; /* Perkecil sedikit ukuran judul halaman */
+        margin-bottom: 30px;
+        text-align: center; /* Posisikan judul di tengah untuk HP */
+        display: block;
+    }
+
+    .about-wrapper {
+        flex-direction: column;
+    }
+    
+    .contact-methods {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+    
+    .contact-card {
+        width: 100%;
+        padding: 20px;
+    }
+}
